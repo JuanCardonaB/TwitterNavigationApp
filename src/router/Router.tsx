@@ -1,5 +1,9 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from '@react-navigation/native';
 import {Feed} from '../Feed/Feed';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Notifications} from '../Notifications/Notifications';
@@ -8,6 +12,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {TweetDetails} from '../TweetDetails/TweetDetails';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {FollowingTweets} from '../Feed/components/FollowingTweets';
+import {useColorScheme} from 'react-native';
 
 const TopTab = createMaterialTopTabNavigator();
 
@@ -34,11 +39,7 @@ const TabGroup = () => {
     <Tab.Navigator initialRouteName="Feed">
       <Tab.Screen name="Feed" component={TopTabGroup} />
       <Tab.Screen name="Notifications" component={Notifications} />
-      <Tab.Screen
-        options={{headerShown: false}}
-        name="Profile"
-        component={Profile}
-      />
+      <Tab.Screen name="Settings" component={Profile} />
     </Tab.Navigator>
   );
 };
@@ -63,8 +64,10 @@ const StackGroup = () => {
 };
 
 export const Router = () => {
+  const currentTheme = useColorScheme();
+  const theme = currentTheme === 'dark' ? DarkTheme : DefaultTheme;
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <StackGroup />
     </NavigationContainer>
   );

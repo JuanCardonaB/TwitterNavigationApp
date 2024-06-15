@@ -1,8 +1,27 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View, useColorScheme} from 'react-native';
 import {TweetTypes} from '../types/TweetTypes';
 
 export const TweetContent = ({tweet}: {tweet: TweetTypes}) => {
+  const theme = useColorScheme();
+  const textColor = theme === 'dark' ? '#ddd' : 'black';
+  const commentRoute =
+    theme === 'dark'
+      ? require('../../../public/TweetIcons/commentDarkMode.png')
+      : require('../../../public/TweetIcons/speech-bubble.png');
+  const retweetRoute =
+    theme === 'dark'
+      ? require('../../../public/TweetIcons/retweet.png')
+      : require('../../../public/TweetIcons/repost.png');
+  const likeRoute =
+    theme === 'dark'
+      ? require('../../../public/TweetIcons/love_darkmode.png')
+      : require('../../../public/TweetIcons/love.png');
+  const shareRoute =
+    theme === 'dark'
+      ? require('../../../public/TweetIcons/share_darkmode.png')
+      : require('../../../public/TweetIcons/share.png');
+
   return (
     <View style={styles.container}>
       <Image
@@ -11,40 +30,32 @@ export const TweetContent = ({tweet}: {tweet: TweetTypes}) => {
       />
       <View style={styles.tweetContent}>
         <View style={styles.authorScreenName}>
-          <Text style={styles.authorName} numberOfLines={1}>
+          <Text
+            style={[styles.authorName, {color: textColor}]}
+            numberOfLines={1}>
             {tweet.author.name}
           </Text>
           <Text style={styles.authorUserName}>@{tweet.author.screenName}</Text>
           <Text style={styles.authorUserName}>·</Text>
           <Text style={styles.authorUserName}>2h</Text>
         </View>
-        <Text style={styles.description}>{tweet.fullText}</Text>
+        <Text style={[styles.description, {color: textColor}]}>
+          {tweet.fullText}
+        </Text>
         <View style={styles.actions}>
           <View style={styles.iconContainer}>
-            <Image
-              style={styles.icon}
-              source={require('../../../public/TweetIcons/speech-bubble.png')}
-            />
-            <Text>{tweet.replyCount}</Text>
+            <Image style={styles.icon} source={commentRoute} />
+            <Text style={{color: textColor}}>{tweet.replyCount}</Text>
           </View>
           <View style={styles.iconContainer}>
-            <Image
-              style={styles.icon}
-              source={require('../../../public/TweetIcons/repost.png')}
-            />
-            <Text>{tweet.retweetCount}</Text>
+            <Image style={styles.icon} source={retweetRoute} />
+            <Text style={{color: textColor}}>{tweet.retweetCount}</Text>
           </View>
           <View style={styles.iconContainer}>
-            <Image
-              style={styles.icon}
-              source={require('../../../public/TweetIcons/love.png')}
-            />
-            <Text>{tweet.favoriteCount}</Text>
+            <Image style={styles.icon} source={likeRoute} />
+            <Text style={{color: textColor}}>{tweet.favoriteCount}</Text>
           </View>
-          <Image
-            style={styles.icon}
-            source={require('../../../public/TweetIcons/share.png')}
-          />
+          <Image style={styles.icon} source={shareRoute} />
         </View>
       </View>
     </View>
@@ -58,7 +69,6 @@ const styles = StyleSheet.create({
     gap: 15,
     paddingHorizontal: 20,
     paddingVertical: 20,
-    borderColor: 'gray',
   },
   avatarImage: {
     width: 44,

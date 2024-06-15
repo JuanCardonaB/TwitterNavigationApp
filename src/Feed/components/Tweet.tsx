@@ -1,15 +1,18 @@
 import React from 'react';
 import {RootStackParamList, TweetTypes} from '../types/TweetTypes';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
-import {Pressable, StyleSheet} from 'react-native';
+import {Pressable, useColorScheme} from 'react-native';
 import {TweetContent} from './TweetContent';
 
 export const Tweet = ({tweet}: {tweet: TweetTypes}) => {
   const {navigate} = useNavigation<NavigationProp<RootStackParamList>>();
+  const theme = useColorScheme();
+
+  const colorBorder = theme === 'dark' ? 'lightgray' : 'gray';
 
   return (
     <Pressable
-      style={styles.container}
+      style={{borderBottomColor: colorBorder, borderBottomWidth: 0.2}}
       onPress={() => {
         navigate('TweetDetails', {tweet});
       }}>
@@ -17,10 +20,3 @@ export const Tweet = ({tweet}: {tweet: TweetTypes}) => {
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    borderBottomWidth: 0.2,
-    borderBottomColor: 'gray',
-  },
-});

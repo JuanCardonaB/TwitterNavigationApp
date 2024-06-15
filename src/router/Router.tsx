@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Feed} from '../Feed/Feed';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Notifications} from '../Notifications/Notifications';
-import {Settings} from '../Settings/Settings';
+import {Profile} from '../profile/Profile';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {TweetDetails} from '../TweetDetails/TweetDetails';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
@@ -34,7 +34,11 @@ const TabGroup = () => {
     <Tab.Navigator initialRouteName="Feed">
       <Tab.Screen name="Feed" component={TopTabGroup} />
       <Tab.Screen name="Notifications" component={Notifications} />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen
+        options={{headerShown: false}}
+        name="Profile"
+        component={Profile}
+      />
     </Tab.Navigator>
   );
 };

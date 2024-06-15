@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     gap: 15,
     paddingHorizontal: 20,
     paddingVertical: 20,
-    borderBottomWidth: 0.2,
     borderColor: 'gray',
   },
   avatarImage: {

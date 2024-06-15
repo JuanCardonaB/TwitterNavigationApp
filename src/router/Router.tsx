@@ -4,12 +4,15 @@ import {Feed} from '../Feed/Feed';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Notifications} from '../Notifications/Notifications';
 import {Settings} from '../Settings/Settings';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {TweetDetails} from '../TweetDetails/TweetDetails';
+// import {createDrawerNavigator} from '@react-navigation/drawer';
 
+// Tabs
 const Tab = createBottomTabNavigator();
-
 const TabGroup = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName="Feed">
       <Tab.Screen name="Feed" component={Feed} />
       <Tab.Screen name="Notifications" component={Notifications} />
       <Tab.Screen name="Settings" component={Settings} />
@@ -17,10 +20,29 @@ const TabGroup = () => {
   );
 };
 
+// Stack
+const Stack = createNativeStackNavigator();
+const StackGroup = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="TabGroup"
+        component={TabGroup}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="TweetDetails"
+        component={TweetDetails}
+        options={{presentation: 'modal'}}
+      />
+    </Stack.Navigator>
+  );
+};
+
 export const Router = () => {
   return (
     <NavigationContainer>
-      <TabGroup />
+      <StackGroup />
     </NavigationContainer>
   );
 };

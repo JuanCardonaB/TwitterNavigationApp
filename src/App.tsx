@@ -1,20 +1,8 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text} from 'react-native';
+import {Router} from './router/Router';
 
 function App(): React.JSX.Element {
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <Text>Start</Text>
-      </ScrollView>
-    </SafeAreaView>
-  );
+  return <Router />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;

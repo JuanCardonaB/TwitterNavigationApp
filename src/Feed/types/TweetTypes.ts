@@ -1,3 +1,5 @@
+import {RouteProp} from '@react-navigation/native';
+
 interface Author {
   name: string;
   screenName: string;
@@ -12,3 +14,15 @@ export interface TweetTypes {
   replyCount: number;
   favoriteCount: number;
 }
+
+export type RootStackParamList = {
+  Feed: undefined;
+  Notifications: undefined;
+  Settings: undefined;
+  TweetDetails: {tweet: TweetTypes};
+};
+
+export type TweetDetailsRouteProp = RouteProp<
+  RootStackParamList,
+  'TweetDetails'
+>;

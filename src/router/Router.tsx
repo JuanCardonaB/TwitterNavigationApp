@@ -6,14 +6,33 @@ import {Notifications} from '../Notifications/Notifications';
 import {Settings} from '../Settings/Settings';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {TweetDetails} from '../TweetDetails/TweetDetails';
-// import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {FollowingTweets} from '../Feed/components/FollowingTweets';
+
+const TopTab = createMaterialTopTabNavigator();
+
+const TopTabGroup = () => {
+  return (
+    <TopTab.Navigator
+      screenOptions={{
+        tabBarLabelStyle: {
+          textTransform: 'capitalize',
+          fontSize: 14,
+        },
+      }}>
+      <TopTab.Screen name="News" component={Feed} />
+      <TopTab.Screen name="Following" component={FollowingTweets} />
+      <TopTab.Screen name="Likes" component={FollowingTweets} />
+    </TopTab.Navigator>
+  );
+};
 
 // Tabs
 const Tab = createBottomTabNavigator();
 const TabGroup = () => {
   return (
     <Tab.Navigator initialRouteName="Feed">
-      <Tab.Screen name="Feed" component={Feed} />
+      <Tab.Screen name="Feed" component={TopTabGroup} />
       <Tab.Screen name="Notifications" component={Notifications} />
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>

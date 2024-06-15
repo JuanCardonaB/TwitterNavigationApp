@@ -1,10 +1,14 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {SafeAreaView, Text, View, useColorScheme} from 'react-native';
 
 export const LikeTweets = () => {
+  const theme = useColorScheme();
+  const color = theme === 'dark' ? '#ddd' : 'black';
   return (
-    <View>
-      <Text>LikeTweets</Text>
-    </View>
+    <SafeAreaView>
+      <View>
+        <Text style={{color: color}}>LikeTweets</Text>
+      </View>
+    </SafeAreaView>
   );
 };

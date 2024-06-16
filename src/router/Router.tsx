@@ -12,24 +12,31 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {TweetDetails} from '../TweetDetails/TweetDetails';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {FollowingTweets} from '../Feed/components/FollowingTweets';
-import {useColorScheme} from 'react-native';
+import {SafeAreaView, View, useColorScheme} from 'react-native';
 import {LikeTweets} from '../Feed/components/LikesTweets';
+import {EditProfile} from '../profile/components/EditProfile';
 
 const TopTab = createMaterialTopTabNavigator();
 
 const TopTabGroup = () => {
+  const currentTheme = useColorScheme();
+  const theme = currentTheme === 'dark' ? '#111' : 'white';
   return (
-    <TopTab.Navigator
-      screenOptions={{
-        tabBarLabelStyle: {
-          textTransform: 'capitalize',
-          fontSize: 14,
-        },
-      }}>
-      <TopTab.Screen name="News" component={Feed} />
-      <TopTab.Screen name="Following" component={FollowingTweets} />
-      <TopTab.Screen name="Likes" component={LikeTweets} />
-    </TopTab.Navigator>
+    <View style={{flex: 1, backgroundColor: theme}}>
+      <SafeAreaView style={{flex: 1}}>
+        <TopTab.Navigator
+          screenOptions={{
+            tabBarLabelStyle: {
+              textTransform: 'capitalize',
+              fontSize: 14,
+            },
+          }}>
+          <TopTab.Screen name="News" component={Feed} />
+          <TopTab.Screen name="Following" component={FollowingTweets} />
+          <TopTab.Screen name="Likes" component={LikeTweets} />
+        </TopTab.Navigator>
+      </SafeAreaView>
+    </View>
   );
 };
 
@@ -38,9 +45,21 @@ const Tab = createBottomTabNavigator();
 const TabGroup = () => {
   return (
     <Tab.Navigator initialRouteName="Feed">
-      <Tab.Screen name="Feed" component={TopTabGroup} />
-      <Tab.Screen name="Notifications" component={Notifications} />
-      <Tab.Screen name="Settings" component={Profile} />
+      <Tab.Screen
+        options={{headerShown: false}}
+        name="Feed"
+        component={TopTabGroup}
+      />
+      <Tab.Screen
+        options={{headerShown: false}}
+        name="Notifications"
+        component={Notifications}
+      />
+      <Tab.Screen
+        options={{headerShown: false}}
+        name="Profile"
+        component={Profile}
+      />
     </Tab.Navigator>
   );
 };
@@ -60,6 +79,7 @@ const StackGroup = () => {
         component={TweetDetails}
         options={{presentation: 'modal'}}
       />
+      <Stack.Screen name="EditProfile" component={EditProfile} />
     </Stack.Navigator>
   );
 };

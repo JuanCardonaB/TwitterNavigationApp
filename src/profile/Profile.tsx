@@ -4,18 +4,10 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   useColorScheme,
 } from 'react-native';
-
-const Option = ({title}: {title: string}) => {
-  return (
-    <TouchableOpacity style={styles.option}>
-      <Text>{title}</Text>
-    </TouchableOpacity>
-  );
-};
+import {Option} from './components/Options';
 
 export const Profile = () => {
   const theme = useColorScheme();
@@ -34,15 +26,19 @@ export const Profile = () => {
         </Text>
       </View>
       <View style={[styles.card, {marginTop: 40}]}>
-        <Option title="Edit profile" />
+        <Option
+          title="Edit profile"
+          borderTop={true}
+          navigateTo="EditProfile"
+        />
         <Option title="Notification" />
-        <Option title="Lenguage" />
+        <Option title="Lenguage" borderBottom={true} />
       </View>
 
       <View style={[styles.card, {marginTop: 40}]}>
-        <Option title="Edit profile" />
+        <Option title="Edit profile" borderTop={true} />
         <Option title="Notification" />
-        <Option title="Lenguage" />
+        <Option title="Lenguage" borderBottom={true} />
       </View>
     </SafeAreaView>
   );
@@ -52,10 +48,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: '100%',
-  },
-  option: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
   },
   userInfo: {
     alignItems: 'center',

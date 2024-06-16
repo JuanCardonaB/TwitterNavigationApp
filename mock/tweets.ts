@@ -13,7 +13,7 @@ export const tweets = [
     replyCount: 1,
     favoriteCount: 5,
     like: true,
-    retweet: false,
+    retweet: true,
   },
   {
     author: {
@@ -45,7 +45,7 @@ export const tweets = [
     replyCount: 2,
     favoriteCount: 13,
     like: true,
-    retweet: false,
+    retweet: true,
   },
   {
     author: {
@@ -61,7 +61,7 @@ export const tweets = [
     replyCount: 14,
     favoriteCount: 64,
     like: false,
-    retweet: false,
+    retweet: true,
   },
   {
     author: {
@@ -92,7 +92,7 @@ export const tweets = [
     replyCount: 20,
     favoriteCount: 551,
     like: true,
-    retweet: false,
+    retweet: true,
   },
   {
     author: {
@@ -107,7 +107,7 @@ export const tweets = [
     replyCount: 0,
     favoriteCount: 11,
     like: false,
-    retweet: false,
+    retweet: true,
   },
   {
     author: {
@@ -123,7 +123,7 @@ export const tweets = [
     replyCount: 10,
     favoriteCount: 5889,
     like: true,
-    retweet: false,
+    retweet: true,
   },
   {
     author: {
@@ -234,7 +234,7 @@ export const tweets = [
     replyCount: 0,
     favoriteCount: 0,
     like: false,
-    retweet: false,
+    retweet: true,
   },
   {
     author: {
@@ -281,7 +281,7 @@ export const tweets = [
     retweetCount: 0,
     replyCount: 6,
     favoriteCount: 31,
-    like: true,
+    like: false,
     retweet: false,
   },
   {
@@ -298,7 +298,7 @@ export const tweets = [
     replyCount: 0,
     favoriteCount: 1,
     like: false,
-    retweet: true,
+    retweet: false,
   },
   {
     author: {
@@ -345,7 +345,7 @@ export const tweets = [
     retweetCount: 2,
     replyCount: 0,
     favoriteCount: 4,
-    like: true,
+    like: false,
     retweet: false,
   },
   {
@@ -377,7 +377,7 @@ export const tweets = [
     retweetCount: 0,
     replyCount: 2,
     favoriteCount: 0,
-    like: true,
+    like: false,
     retweet: false,
   },
   {

@@ -23,6 +23,7 @@ export const TweetContent = ({tweet}: {tweet: TweetTypes}) => {
       : require('../../../public/TweetIcons/share.png');
 
   const likedRoute = require('../../../public/TweetIcons/heart.png');
+  const retweetedRoute = require('../../../public/TweetIcons/repeat.png');
 
   return (
     <View style={styles.container}>
@@ -50,8 +51,13 @@ export const TweetContent = ({tweet}: {tweet: TweetTypes}) => {
             <Text style={{color: textColor}}>{tweet.replyCount}</Text>
           </View>
           <View style={styles.iconContainer}>
-            <Image style={styles.icon} source={retweetRoute} />
-            <Text style={{color: textColor}}>{tweet.retweetCount}</Text>
+            <Image
+              style={styles.icon}
+              source={tweet.retweet ? retweetedRoute : retweetRoute}
+            />
+            <Text style={{color: tweet.retweet ? '#00a28e' : textColor}}>
+              {tweet.retweetCount}
+            </Text>
           </View>
           <View style={styles.iconContainer}>
             <Image

@@ -14,6 +14,7 @@ export interface TweetTypes {
   replyCount: number;
   favoriteCount: number;
   like?: boolean;
+  retweet?: boolean;
 }
 
 export type RootStackParamList = {

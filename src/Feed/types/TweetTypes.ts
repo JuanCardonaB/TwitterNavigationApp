@@ -13,6 +13,7 @@ export interface TweetTypes {
   retweetCount: number;
   replyCount: number;
   favoriteCount: number;
+  like?: boolean;
 }
 
 export type RootStackParamList = {

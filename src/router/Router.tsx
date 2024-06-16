@@ -13,7 +13,7 @@ import {TweetDetails} from '../TweetDetails/TweetDetails';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {FollowingTweets} from '../Feed/components/FollowingTweets';
 import {SafeAreaView, View, useColorScheme} from 'react-native';
-import {LikeTweets} from '../Feed/components/LikesTweets';
+import {LikedTweets} from '../Feed/components/LikedTweets';
 import {EditProfile} from '../profile/components/EditProfile';
 
 const TopTab = createMaterialTopTabNavigator();
@@ -33,7 +33,7 @@ const TopTabGroup = () => {
           }}>
           <TopTab.Screen name="News" component={Feed} />
           <TopTab.Screen name="Following" component={FollowingTweets} />
-          <TopTab.Screen name="Likes" component={LikeTweets} />
+          <TopTab.Screen name="Likes" component={LikedTweets} />
         </TopTab.Navigator>
       </SafeAreaView>
     </View>

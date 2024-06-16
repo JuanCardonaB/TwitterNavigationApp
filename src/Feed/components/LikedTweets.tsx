@@ -1,14 +1,16 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, View} from 'react-native';
-import {followingTweets} from '../../../mock/followingTweets';
-import {Tweet} from './Tweet';
+import {SafeAreaView, View} from 'react-native';
 
-export const FollowingTweets = () => {
+import {Tweet} from './Tweet';
+import {likedTweets} from '../../../mock/likedTweets';
+import {ScrollView} from 'react-native';
+
+export const LikedTweets = () => {
   return (
     <SafeAreaView>
       <ScrollView>
         <View>
-          {followingTweets.map(tweet => {
+          {likedTweets.map(tweet => {
             return <Tweet tweet={tweet} key={tweet.id} />;
           })}
         </View>

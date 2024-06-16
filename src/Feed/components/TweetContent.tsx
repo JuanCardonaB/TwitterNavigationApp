@@ -22,6 +22,8 @@ export const TweetContent = ({tweet}: {tweet: TweetTypes}) => {
       ? require('../../../public/TweetIcons/share_darkmode.png')
       : require('../../../public/TweetIcons/share.png');
 
+  const likedRoute = require('../../../public/TweetIcons/heart.png');
+
   return (
     <View style={styles.container}>
       <Image
@@ -52,8 +54,13 @@ export const TweetContent = ({tweet}: {tweet: TweetTypes}) => {
             <Text style={{color: textColor}}>{tweet.retweetCount}</Text>
           </View>
           <View style={styles.iconContainer}>
-            <Image style={styles.icon} source={likeRoute} />
-            <Text style={{color: textColor}}>{tweet.favoriteCount}</Text>
+            <Image
+              style={styles.icon}
+              source={tweet.like ? likedRoute : likeRoute}
+            />
+            <Text style={{color: tweet.like ? '#f9595f' : textColor}}>
+              {tweet.favoriteCount}
+            </Text>
           </View>
           <Image style={styles.icon} source={shareRoute} />
         </View>

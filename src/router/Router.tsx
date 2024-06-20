@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/native';
 import {Feed} from '../Feed/Feed';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Notifications} from '../Notifications/Notifications';
+import {AllNotifications} from '../Notifications/AllNotifications';
 import {Profile} from '../profile/Profile';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {TweetDetails} from '../TweetDetails/TweetDetails';
@@ -15,6 +15,8 @@ import {FollowingTweets} from '../Feed/components/FollowingTweets';
 import {SafeAreaView, View, useColorScheme} from 'react-native';
 import {LikedTweets} from '../Feed/components/LikedTweets';
 import {EditProfile} from '../profile/components/EditProfile';
+import {Mentions} from '../Notifications/Mentions';
+import {RetweetNotifications} from '../Notifications/Retweets';
 
 const TopTab = createMaterialTopTabNavigator();
 
@@ -40,6 +42,26 @@ const TopTabGroup = () => {
   );
 };
 
+const TopTabGroupNotifications = () => {
+  return (
+    <View style={{flex: 1, backgroundColor: '#111'}}>
+      <SafeAreaView style={{flex: 1}}>
+        <TopTab.Navigator
+          screenOptions={{
+            tabBarLabelStyle: {
+              textTransform: 'capitalize',
+              fontSize: 14,
+            },
+          }}>
+          <TopTab.Screen name="All" component={AllNotifications} />
+          <TopTab.Screen name="Retweets" component={RetweetNotifications} />
+          <TopTab.Screen name="Mentions" component={Mentions} />
+        </TopTab.Navigator>
+      </SafeAreaView>
+    </View>
+  );
+};
+
 // Tabs
 const Tab = createBottomTabNavigator();
 const TabGroup = () => {
@@ -50,11 +72,7 @@ const TabGroup = () => {
         name="Feed"
         component={TopTabGroup}
       />
-      <Tab.Screen
-        options={{headerShown: false}}
-        name="Notifications"
-        component={Notifications}
-      />
+      <Tab.Screen name="Notifications" component={TopTabGroupNotifications} />
       <Tab.Screen
         options={{headerShown: false}}
         name="Profile"
